@@ -1,0 +1,77 @@
+html, body {
+    height: 100%;
+    font-family: 'Lato';
+    padding-top: 20px;
+}
+.fa-btn {
+    margin-right: 6px;
+}
+
+.fa-spinner{
+   margin-right: 6px; 
+}
+
+.content {
+    text-align: center;
+    margin-top: 100px;
+    width: 100%;
+    display: inline-block;
+    display: table;
+    font-family: 'Lato';
+}
+
+.title {
+    font-size: 96px;
+    font-weight: 100;
+    margin-top: 150px;
+    color: #fff;
+    letter-spacing: 10px;
+}
+.panel-default-login-page{
+    padding-top: 30px;
+}
+
+.navbar {
+    border-radius: 0;
+}
+
+.login-page{
+    height: 100%;
+    margin-top: 0px;
+    width: 100%;
+    background-image: url('/assets/images/cover.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.navbar-brand{
+    font-size: 26px;
+    letter-spacing: 10px;
+}
+.panel{
+    margin-top: 40px;
+}
+
+.table-users{
+    margin-top: 20px;
+}
+.foto-perfil{
+    max-width: 250px;
+    max-height: 500px;
+}
+.row{
+    margin-top: 15px;
+}
+
+.edit-miembro{
+    padding-top: 30px;
+}
+
+.alert{
+    text-align: center;
+    padding-top: 20px;
+    font-size: 20px;
+}
+/*# sourceMappingURL=all.css.map */
