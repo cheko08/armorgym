@@ -24,6 +24,7 @@ class CreateMiembrosTable extends Migration
             $table->string('status');
             $table->string('foto');
             $table->integer('user_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

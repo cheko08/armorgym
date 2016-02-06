@@ -103,5 +103,12 @@ class MiembroController extends Controller
 		}
 	}
 
+	public function destroy($id)
+	{
+		$miembro = Miembro::findOrFail($id);
+		$miembro->delete();
+	}
+
+
 
 }

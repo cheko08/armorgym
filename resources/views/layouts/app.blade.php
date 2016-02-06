@@ -59,6 +59,10 @@
                             <li class="dropdown-header">Menu</li>
                                 <li><a href="{{ url('/home') }}"><i class="fa fa-btn fa-desktop"></i>Panel de administración</a></li>
                                  <li><a href="{{ url('/miembros/create') }}"><i class="fa fa-btn fa-user-plus"></i>Registrar Miembro</a></li>
+                                 <li role="separator" class="divider"></li>
+                                  <li class="dropdown-header">Configuración</li>
+                                   <li><a href="{{ url('membresias') }}"><i class="fa fa-btn fa-credit-card"></i>Membresías</a></li>
+                                 <li><a href="{{ url('sucursales') }}"><i class="fa fa-btn fa-building"></i>Sucursales</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Cerrar Sesión</a></li>
                             </ul>
@@ -73,6 +77,6 @@
 
     <!-- JavaScripts -->
     <script src="{{ elixir('js/all.js') }}"></script>
-    
+     @yield('scripts')
 </body>
 </html>

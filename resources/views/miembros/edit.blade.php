@@ -6,6 +6,12 @@
 	<div class="row">
 		<div class="col-md-2 edit-miembro">
 			<img src="{{url('fotos/'.$miembro->foto)}}" alt="Foto" class="img-thumbnail foto-perfil">
+			<div class="form-group">
+			<a href="#" id="eliminar_miembro" class="btn btn-menu btn-danger" role="button">
+			<i class="fa fa-btn fa-trash"></i>Eliminar Miembro
+			</a>
+			<input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" > 
+		</div>
 		</div>
 
 		<div class="col-md-10 edit-miembro">
@@ -136,5 +142,38 @@
 		</div>
 	</div>
 </div>
+@section('scripts')
 
+<script>
+	$('#eliminar_miembro').click(function () {
+		var token = $('#token').val();
+		swal({
+			title: "¿Desea borrar este miembro?",   
+			text: "Una vez borrado no habrá manera de recuperar su información",   
+			type: "warning",   
+			showCancelButton: true,   
+			confirmButtonColor: "#DD6B55",   
+			confirmButtonText: "Si, Estoy seguro!",   
+			cancelButtonText: "Cancelar",   
+			closeOnConfirm: false,   
+			closeOnCancel: true 
+		}, 
+		function(isConfirm){   
+			if (isConfirm) {     
+				$.ajax({
+					url: '{!! url("miembros/destroy/".$miembro->id) !!}',
+					headers: {'X-CSRF-TOKEN': token},
+					type: 'post'
+					 }).then(function () {
+
+					window.location.replace('{!! url("home") !!}');
+				});
+			} 
+
+		});
+
+	});
+</script>
+
+@endsection
 @endsection

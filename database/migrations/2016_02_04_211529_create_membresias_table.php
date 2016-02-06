@@ -19,6 +19,7 @@ class CreateMembresiasTable extends Migration
             $table->integer('precio_mensual');
             $table->integer('inscripcion');
             $table->string('status');
+             $table->softDeletes();
             $table->timestamps();
         });
     }

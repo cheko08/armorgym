@@ -13,11 +13,13 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
     mix.styles([
+    	'sweetalert.css',
         'styles.css',
     ])
      .scripts([
         'jquery.js',
         'bootstrap.js',
+        'sweetalert.js',
         'scripts.js',
     ])
      .version(["css/all.css", "js/all.js"]);
