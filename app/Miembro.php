@@ -14,6 +14,8 @@ class Miembro extends Model
     'apellidos',
     'email',
     'telefono',
+    'fecha_inscripcion',
+    'fecha_proximo_pago',
     'status',
     'foto',
     'sucursal_id',

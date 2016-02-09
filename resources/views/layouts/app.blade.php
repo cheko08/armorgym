@@ -58,6 +58,7 @@
                             <ul class="dropdown-menu" role="menu">
                             <li class="dropdown-header">Menu</li>
                                 <li><a href="{{ url('/home') }}"><i class="fa fa-btn fa-desktop"></i>Panel de administración</a></li>
+                                 <li><a href="{{ url('/miembros/acceso') }}"><i class="fa fa-btn fa-sign-in"></i>Acceso de Miembros</a></li>
                                  <li><a href="{{ url('/miembros/create') }}"><i class="fa fa-btn fa-user-plus"></i>Registrar Miembro</a></li>
                                  <li role="separator" class="divider"></li>
                                   <li class="dropdown-header">Configuración</li>

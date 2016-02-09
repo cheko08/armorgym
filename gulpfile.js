@@ -20,6 +20,7 @@ elixir(function(mix) {
         'jquery.js',
         'bootstrap.js',
         'sweetalert.js',
+        'date.js',
         'scripts.js',
     ])
      .version(["css/all.css", "js/all.js"]);

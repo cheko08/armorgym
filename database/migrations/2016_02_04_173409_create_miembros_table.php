@@ -18,6 +18,8 @@ class CreateMiembrosTable extends Migration
             $table->string('apellidos');
             $table->string('email')->unique();
             $table->string('telefono');
+            $table->date('fecha_inscripcion');
+            $table->date('fecha_proximo_pago');
             $table->text('comentarios');
             $table->integer('sucursal_id');
             $table->integer('membresia_id');

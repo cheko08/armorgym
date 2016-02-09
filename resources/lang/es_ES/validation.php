@@ -36,7 +36,7 @@ return [
     "digits_between"       => "El campo :attribute debe contener entre :min y :max dígitos.",
     "email"                => "El campo :attribute no corresponde con una dirección de e-mail válida.",
     "filled"               => "El campo :attribute es obligatorio.",
-    "exists"               => "El campo :attribute no existe.",
+    "exists"               => "El miembro con este :attribute no existe en nuestra base de datos.",
     "image"                => "El campo :attribute debe ser una imagen.",
     "in"                   => "El campo :attribute debe ser igual a alguno de estos valores :values",
     "integer"              => "El campo :attribute debe ser un número entero.",

@@ -51,7 +51,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary" id="login">
-                                    <i class="fa fa-btn fa-sign-in" id="button"></i>Iniciar Sesión
+                                    <i class="fa fa-btn fa-sign-in" id="button"></i><span id="text">Iniciar Sesión</span>
                                 </button>
 
                                

@@ -66,7 +66,7 @@
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary" id="save">
-									<i class="fa fa-btn fa-save" id="button"></i> Guardar
+									<i class="fa fa-btn fa-save" id="button"></i><span id="text">Guardar</span>
 								</button>
 								<a href="#" id="eliminar_membresia" class="btn btn-menu btn-danger" role="button">
 									<i class="fa fa-btn fa-trash"></i>Eliminar

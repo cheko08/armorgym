@@ -57,7 +57,7 @@
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary" id="save">
-									<i class="fa fa-btn fa-save" id="button"></i> Guardar
+									<i class="fa fa-btn fa-save" id="button"></i><span id="text">Guardar</span>
 								</button>
 							</div>
 						</div>

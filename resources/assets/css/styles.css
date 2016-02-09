@@ -46,8 +46,20 @@ html, body {
     background-size: cover;
 }
 
+.acceso-page{
+    height: 100%;
+    margin-top: 0px;
+    width: 100%;
+    background-image: url('/assets/images/armorgym.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
 .navbar-brand{
     font-size: 26px;
+    font-weight: 300;
     letter-spacing: 10px;
 }
 .panel{
@@ -96,6 +108,18 @@ html, body {
   }
 }
 
+.acceso-container{
+    margin: 250px auto;
+    max-width: 400px;
+    text-align: center;
+}
+.acceso-container input{
+    font-size: 40px;
+    height: 68px;
+    text-align: center;
+    font-weight: 800;
+}
+
 /* Sidebar navigation */
 .nav-sidebar {
   margin-right: -21px; /* 20px padding + 1px border */
@@ -126,3 +150,14 @@ html, body {
     padding-left: 40px;
   }
 }
+
+.camcontent{
+  overflow: hidden;
+  height: 250px;
+  width: 250px;
+  margin: auto;
+  }
+
+  .perfil{
+    font-size: 40px;
+  }

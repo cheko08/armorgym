@@ -20,7 +20,10 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('miembros/store','MiembroController@store');
     Route::get('miembros/edit/{id}','MiembroController@edit');
     Route::post('miembros/update/{id}','MiembroController@update');
+    Route::post('miembros/updateFoto/{id}','MiembroController@updateFoto');
     Route::post('miembros/destroy/{id}','MiembroController@destroy');
+    Route::get('miembros/acceso', 'MiembroController@acceso');
+    Route::post('miembros/validar-acceso', 'MiembroController@validarAcceso');
 
     Route::get('membresias','MembresiaController@index');
     Route::get('membresias/create','MembresiaController@create');

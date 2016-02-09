@@ -66,6 +66,22 @@
 							</div>
 						</div>
 
+						<div class="form-group{{ $errors->has('fecha_inscripcion') ? ' has-error' : '' }}">
+							<label class="col-md-4 control-label">Fecha de Inscripción</label>
+
+							<div class="col-md-6">
+								<input type="date" class="form-control" id="fecha_inscripcion" name="fecha_inscripcion" value="{{ old('fecha_inscripcion') }}">
+
+								@if ($errors->has('fecha_inscripcion'))
+								<span class="help-block">
+									<strong>{{ $errors->first('fecha_inscripcion') }}</strong>
+								</span>
+								@endif
+							</div>
+						</div>
+
+					
+
 						<div class="form-group{{ $errors->has('sucursal') ? ' has-error' : '' }}">
 							<label class="col-md-4 control-label">Sucursal</label>
 
@@ -111,7 +127,7 @@
 						</div>
 
 						<div class="form-group">
-						<label class="col-md-4 control-label">Foto</label>
+							<label class="col-md-4 control-label">Foto</label>
 
 							<div class="col-md-6">
 								<input type="file" class="form-control" name="foto" accept="image/*;capture=camera">
@@ -120,15 +136,15 @@
 							
 						</div>
 
-
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary" id="register">
-									<i class="fa fa-btn fa-user-plus" id="button"></i>Registrar Miembro
+									<i class="fa fa-btn fa-user-plus" id="button"></i><span id="text">Registrar Miembro</span>
 								</button>
 							</div>
 						</div>
 					</form>
+
 				</div>
 			</div>
 		</div>
