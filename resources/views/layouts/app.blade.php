@@ -39,6 +39,15 @@
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
+             @if(Auth::check())
+   <form action="{{ url('/buscar') }}" class="navbar-form navbar-left" method="post">
+   {!! csrf_field() !!}
+      <div class="form-group">
+        <input type="text" name="miembro" class="form-control" placeholder="Buscar Miembro">
+      </div>
+      <button type="submit" class="btn btn-default"><i class="fa fa-btn fa-search"></i></button>
+    </form>
+    @endif
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                    

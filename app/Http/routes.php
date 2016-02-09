@@ -15,6 +15,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
     Route::get('/', 'HomeController@index');
     Route::get('home', 'HomeController@panelDeControl');
+    Route::post('buscar', 'HomeController@buscar');
 
     Route::get('miembros/create','MiembroController@create');
     Route::post('miembros/store','MiembroController@store');
