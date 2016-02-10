@@ -114,6 +114,16 @@
 					</div>
 				</div>
 
+				<div class="form-group">
+
+					<label class="col-md-4 control-label">Próxima Fecha de Pago</label>
+
+					<div class="col-md-6">
+						<input type="date" class="form-control" name="fecha_proximo_pago" disabled="disabled" value="{{ $miembro->fecha_proximo_pago }}">
+
+					</div>
+				</div>
+
 				<div class="form-group{{ $errors->has('sucursal') ? ' has-error' : '' }}">
 					<label class="col-md-4 control-label">Sucursal</label>
 

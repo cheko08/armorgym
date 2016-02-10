@@ -27,7 +27,6 @@ class CreateMembresiaRequest extends Request
             'nombre'=>'required|unique:membresias',
             'precio_mensual'=>'required|numeric',
             'inscripcion' => 'required|numeric',
-            'descripcion' => 'required',
         ];
     }
 }
