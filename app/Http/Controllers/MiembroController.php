@@ -10,6 +10,7 @@ use App\Http\Requests;
 use App\Membresia;
 use App\Sucursal;
 use App\Miembro;
+use App\Pago;
 use DateTime;
 use Auth;
 
@@ -98,6 +99,7 @@ class MiembroController extends Controller
 		$miembro->apellidos=$request->input('apellidos');
 		$miembro->email=$request->input('email');
 		$miembro->telefono=$request->input('telefono');
+		$miembro->fecha_inscripcion=$request->input('fecha_inscripcion');
 		$miembro->sucursal_id=$request->input('sucursal');
 		$miembro->membresia_id=$request->input('membresia');
 		$miembro->comentarios=$request->input('comentarios');
@@ -141,8 +143,18 @@ class MiembroController extends Controller
 	public function validarAcceso(ValidarMiembroRequest $request)
 	{
 		$miembro = Miembro::withTrashed()->where('id',$request->input('id'))->first();
+		$ultimo_pago = Pago::where('miembro_id', $miembro->id)->first();
 
-		if($miembro->status == 'A' && $miembro->fecha_proximo_pago >= Date('Y-m-d') )
+		if($ultimo_pago)
+		{
+			$ultimo_pago = $ultimo_pago->fecha_pago;
+		}
+		else
+		{
+			$ultimo_pago =  $miembro->fecha_inscripcion;
+		}
+
+		if($miembro->status == 'A' && $miembro->fecha_proximo_pago >= Date('Y-m-d') && $miembro->fecha_inscripcion <  Date('Y-m-d') )
 		{	
 			$acceso ='Permitido';
 			$color ='success';
@@ -153,7 +165,7 @@ class MiembroController extends Controller
 			$color ='danger';
 		}
 
-		return view('miembros.perfil', compact('miembro','acceso','color'));
+		return view('miembros.perfil', compact('miembro','acceso','color','ultimo_pago'));
 	}
 
 

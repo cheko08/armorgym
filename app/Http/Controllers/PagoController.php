@@ -30,7 +30,7 @@ class PagoController extends Controller
 		$miembro = Miembro::findOrFail($id);
 
 		$cantidad = $miembro->membresia->precio_mensual;
-		$fecha_pago = $miembro->fecha_proximo_pago;
+		$fecha_pago =  Date('Y-m-d');
 		$user_id = Auth::user()->id;
 
 		$pago = Pago::create([
@@ -44,7 +44,7 @@ class PagoController extends Controller
 		{
 			$monthToAdd = 1;
 
-		$d1 = DateTime::createFromFormat('Y-m-d', $fecha_pago);
+		$d1 = DateTime::createFromFormat('Y-m-d', $miembro->fecha_proximo_pago);
 
 		$year = $d1->format('Y');
 		$month = $d1->format('n');

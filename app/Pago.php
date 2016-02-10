@@ -12,4 +12,10 @@ class Pago extends Model
     'fecha_pago',
     'user_id',
     ];
+
+
+       public function miembro()
+    {
+        return $this->hasMany('App\Miembro');
+    }
 }

@@ -29,11 +29,12 @@ $formatPago = date("d-m-Y", strtotime($originalDatePago));
 			<p><label for="fecha">Fecha de Inscripción:</label> {{$formatInscripcion}}</p>
 			<p><label for="fecha">Próximo Pago:</label> {{$formatPago}}</p>
 <?php
-$datetime1 = new DateTime($miembro->fecha_inscripcion);
+$today = date('Y-m-d');
+$datetime1 = new DateTime($ultimo_pago);
 $datetime2 = new DateTime($miembro->fecha_proximo_pago);
-$interval = $datetime1->diff($datetime2);
+$interval = $datetime2->diff($datetime1);
 $dias_para_pago = $interval->format('%a');
-if($dias_para_pago > 25)
+if($dias_para_pago > 26)
 {
 	$class ='success';
 	$dias_para_pago2 ='Faltan '.$dias_para_pago.' días para el próximo pago';

@@ -34,6 +34,11 @@ class Miembro extends Model
        return $this->belongsTo('App\Sucursal');
    }
 
+   public function pago()
+   {
+       return $this->belongsTo('App\Pago');
+   }
+
    public function user()
    {
        return $this->belongsTo('App\User')->withTrashed();

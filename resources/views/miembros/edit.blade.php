@@ -103,21 +103,13 @@
 						@endif
 					</div>
 				</div>
-				<?php
-				$originalDateInscripcion = $miembro->fecha_inscripcion;
-				$formatInscripcion = date("d-m-Y", strtotime($originalDateInscripcion));
-
-				$originalDatePago = $miembro->fecha_proximo_pago;
-				$formatPago = date("d-m-Y", strtotime($originalDatePago));
-
-				?>
-
+				
 				<div class="form-group">
 
 					<label class="col-md-4 control-label">Fecha de Inscripción</label>
 
 					<div class="col-md-6">
-						<input type="text" class="form-control" disabled="disabled" name="id" value="{{ $formatInscripcion }}">
+						<input type="date" class="form-control" name="fecha_inscripcion" value="{{ $miembro->fecha_inscripcion }}">
 
 					</div>
 				</div>
