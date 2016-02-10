@@ -14,17 +14,17 @@
 			</div>
 
 			<div class="cambuttons">
-			<div class="row">
-				<div class="col-xs-6">
+				<div class="row">
+					<div class="col-xs-6">
 						<button id="snap" class="btn" style="display:none;"><i class="fa fa-btn fa-camera"></i>Tomar Foto</button> 
 						<button id="upload" class="btn" style="display:none;"><i class="fa fa-btn fa-save"></i>Guardar</button> 
+					</div>
+					<div class="col-xs-6">
+						<button id="reset" class="btn" style="display:none;"><i class="fa fa-btn fa-reply"></i>Reset</button>    
+					</div>
 				</div>
-				<div class="col-xs-6">
-					<button id="reset" class="btn" style="display:none;"><i class="fa fa-btn fa-reply"></i>Reset</button>    
-				</div>
-			</div>
 				
-				 <span id=uploading style="display:none;"><i class="fa fa-spinner fa-spin"></i>Guardando Foto . . .  </span> 
+				<span id=uploading style="display:none;"><i class="fa fa-spinner fa-spin"></i>Guardando Foto . . .  </span> 
 
 			</div>
 
@@ -37,6 +37,16 @@
 		<div class="col-md-10 edit-miembro">
 			<form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" action="{{ url('miembros/update/'.$miembro->id) }}">
 				{!! csrf_field() !!}
+
+				<div class="form-group">
+					<label class="col-md-4 control-label">ID</label>
+
+					<div class="col-md-6">
+						<input type="text" class="form-control" disabled="disabled" name="id" value="{{ $miembro->id }}">
+
+					</div>
+				</div>
+
 
 				<div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}">
 					<label class="col-md-4 control-label">Nombre</label>
@@ -91,6 +101,24 @@
 							<strong>{{ $errors->first('telefono') }}</strong>
 						</span>
 						@endif
+					</div>
+				</div>
+				<?php
+				$originalDateInscripcion = $miembro->fecha_inscripcion;
+				$formatInscripcion = date("d-m-Y", strtotime($originalDateInscripcion));
+
+				$originalDatePago = $miembro->fecha_proximo_pago;
+				$formatPago = date("d-m-Y", strtotime($originalDatePago));
+
+				?>
+
+				<div class="form-group">
+
+					<label class="col-md-4 control-label">Fecha de Inscripción</label>
+
+					<div class="col-md-6">
+						<input type="text" class="form-control" disabled="disabled" name="id" value="{{ $formatInscripcion }}">
+
 					</div>
 				</div>
 

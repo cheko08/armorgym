@@ -33,7 +33,7 @@ class HomeController extends Controller
     public function panelDeControl()
     {
        $miembros_activos = Miembro::where('status', 'A')->count();
-       $miembros = Miembro::paginate(20);
+       $miembros = Miembro::orderBy('id', 'desc')->paginate(20);
         return view('home',compact('miembros','miembros_activos'));
     }
 

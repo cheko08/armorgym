@@ -43,34 +43,8 @@ class MiembroController extends Controller
 				$foto_miembro= $foto;
 			}
 		}
-
-
-		$monthToAdd = 1;
-
-		$d1 = DateTime::createFromFormat('Y-m-d', $request->input('fecha_inscripcion'));
-
-		$year = $d1->format('Y');
-		$month = $d1->format('n');
-		$day = $d1->format('d');
-
-		$year += floor($monthToAdd/12);
-		$monthToAdd = $monthToAdd%12;
-		$month += $monthToAdd;
-		if($month > 12) {
-			$year ++;
-			$month = $month % 12;
-			if($month === 0)
-				$month = 12;
-		}
-
-		if(!checkdate($month, $day, $year)) {
-			$d2 = DateTime::createFromFormat('Y-n-j', $year.'-'.$month.'-1');
-			$d2->modify('last day of');
-		}else {
-			$d2 = DateTime::createFromFormat('Y-n-d', $year.'-'.$month.'-'.$day);
-		}
 		
-		$fecha_proximo_pago = $d2->format('Y-m-d');
+		$fecha_proximo_pago = $request->input('fecha_inscripcion');
 	
 
 		$miembro = Miembro::create([
@@ -84,7 +58,7 @@ class MiembroController extends Controller
 			'membresia_id' => $request->input('membresia'),
 			'comentarios' => $request->input('comentarios'),
 			'user_id'=> Auth::user()->id,
-			'status' => 'A',
+			'status' => 'I',
 			'foto' => $foto_miembro,
 			]);
 		if($miembro)
@@ -168,7 +142,7 @@ class MiembroController extends Controller
 	{
 		$miembro = Miembro::withTrashed()->where('id',$request->input('id'))->first();
 
-		if($miembro->status == 'A')
+		if($miembro->status == 'A' && $miembro->fecha_proximo_pago >= Date('Y-m-d') )
 		{	
 			$acceso ='Permitido';
 			$color ='success';

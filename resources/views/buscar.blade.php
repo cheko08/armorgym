@@ -17,7 +17,8 @@
                               <th>ID</th>
                               <th>Nombre</th>
                               <th>Estatus</th>
-                              <th></th>
+                              <th>Editar</th>
+                              <th>Pagar</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -27,6 +28,7 @@
                               <td>{{$miembro->nombre}} {{$miembro->apellidos}}</td>
                               <td>{{$miembro->status}}</td>
                               <td><a href="{{url('miembros/edit/'.$miembro->id)}}"><i class="fa fa-btn fa-edit"></i></a></td>
+                               <td><a href="{{url('miembros/pagar/'.$miembro->id)}}" class="btn btn-success" role="button"><i class="fa fa-btn fa-dollar"></i></a></td>
                           </tr>
                         @endforeach
 

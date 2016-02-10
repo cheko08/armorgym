@@ -39,4 +39,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('sucursales/edit/{id}','SucursalController@edit');
     Route::post('sucursales/update/{id}','SucursalController@update');
     Route::post('sucursales/destroy/{id}','SucursalController@destroy');
+
+    Route::get('miembros/pagar/{id}','PagoController@pagar');
+    Route::post('pagos/pagar/{id}','PagoController@realizarPago');
 });
