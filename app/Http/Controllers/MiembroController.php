@@ -45,15 +45,17 @@ class MiembroController extends Controller
 			}
 		}
 		
-		$fecha_proximo_pago = $request->input('fecha_inscripcion');
-	
+		$fecha_proximo_pago = date('Y/m/d', strtotime($request->input('fecha_inscripcion')));
+
+	$fecha_inscripcion = date('Y/m/d', strtotime($request->input('fecha_inscripcion')));
+
 
 		$miembro = Miembro::create([
 			'nombre' => $request->input('nombre'),
 			'apellidos' => $request->input('apellidos'),
 			'email' => $request->input('email'),
 			'telefono' => $request->input('telefono'),
-			'fecha_inscripcion' => $request->input('fecha_inscripcion'),
+			'fecha_inscripcion' => $fecha_inscripcion,
 			'fecha_proximo_pago' => $fecha_proximo_pago,
 			'sucursal_id' => $request->input('sucursal'),
 			'membresia_id' => $request->input('membresia'),
@@ -94,12 +96,14 @@ class MiembroController extends Controller
 				$foto_miembro= $foto;
 			}
 		}
+
+		$fecha_inscripcion = date('Y/m/d', strtotime($request->input('fecha_inscripcion')));
 		
 		$miembro->nombre=$request->input('nombre');
 		$miembro->apellidos=$request->input('apellidos');
 		$miembro->email=$request->input('email');
 		$miembro->telefono=$request->input('telefono');
-		$miembro->fecha_inscripcion=$request->input('fecha_inscripcion');
+		$miembro->fecha_inscripcion=$fecha_inscripcion;
 		$miembro->sucursal_id=$request->input('sucursal');
 		$miembro->membresia_id=$request->input('membresia');
 		$miembro->comentarios=$request->input('comentarios');
@@ -154,7 +158,7 @@ class MiembroController extends Controller
 			$ultimo_pago =  $miembro->fecha_inscripcion;
 		}
 
-		if($miembro->status == 'A' && $miembro->fecha_proximo_pago >= Date('Y-m-d') && $miembro->fecha_inscripcion <  Date('Y-m-d') )
+		if($miembro->status == 'A' && $miembro->fecha_proximo_pago >= Date('Y-m-d') && $miembro->fecha_inscripcion <=  Date('Y-m-d') )
 		{	
 			$acceso ='Permitido';
 			$color ='success';

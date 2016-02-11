@@ -14,6 +14,8 @@ var elixir = require('laravel-elixir');
 elixir(function(mix) {
     mix.styles([
     	'sweetalert.css',
+        'jquery-ui.min.css',
+        'jquery-ui.theme.min.css',
         'styles.css',
     ])
      .scripts([
@@ -21,6 +23,7 @@ elixir(function(mix) {
         'bootstrap.js',
         'sweetalert.js',
         'date.js',
+        'jquery-ui.min.js',
         'scripts.js',
     ])
      .version(["css/all.css", "js/all.js"]);

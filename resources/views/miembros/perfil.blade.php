@@ -7,10 +7,10 @@
 </div>    
 <?php
 $originalDateInscripcion = $miembro->fecha_inscripcion;
-$formatInscripcion = date("d-m-Y", strtotime($originalDateInscripcion));
+$formatInscripcion = date("d/m/Y", strtotime($originalDateInscripcion));
 
 $originalDatePago = $miembro->fecha_proximo_pago;
-$formatPago = date("d-m-Y", strtotime($originalDatePago));
+$formatPago = date("d/m/Y", strtotime($originalDatePago));
 
 ?>
 <div class="container">

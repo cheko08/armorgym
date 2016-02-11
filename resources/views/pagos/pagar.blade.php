@@ -48,7 +48,7 @@
 							<?php
 
 							$originalDatePago = $miembro->fecha_proximo_pago;
-							$formatPago = date("d-m-Y", strtotime($originalDatePago));
+							$formatPago = date("d/m/Y", strtotime($originalDatePago));
 
 							?>
 

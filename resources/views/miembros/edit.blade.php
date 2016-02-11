@@ -107,9 +107,18 @@
 				<div class="form-group">
 
 					<label class="col-md-4 control-label">Fecha de Inscripción</label>
+					<?php 
+					$originalDatePago = $miembro->fecha_proximo_pago;
+					$formatInscripcion = date("d/m/Y", strtotime($originalDatePago));
+
+
+					$originalDatePago = $miembro->fecha_proximo_pago;
+					$formatPago = date("d/m/Y", strtotime($originalDatePago));
+
+					?>
 
 					<div class="col-md-6">
-						<input type="date" class="form-control" name="fecha_inscripcion" value="{{ $miembro->fecha_inscripcion }}">
+						<input type="text" id="datepicker" class="form-control" name="fecha_inscripcion" value="{{ $formatInscripcion }}">
 
 					</div>
 				</div>
@@ -119,7 +128,7 @@
 					<label class="col-md-4 control-label">Próxima Fecha de Pago</label>
 
 					<div class="col-md-6">
-						<input type="date" class="form-control" name="fecha_proximo_pago" disabled="disabled" value="{{ $miembro->fecha_proximo_pago }}">
+						<input type="text" class="form-control" name="fecha_proximo_pago" disabled="disabled" value="{{ $formatPago }}">
 
 					</div>
 				</div>
@@ -227,7 +236,9 @@
 
 	});
 </script>
-
+<script>
+	$( "#datepicker" ).datepicker();
+</script>
 
 <script>
         // Put event listeners into place

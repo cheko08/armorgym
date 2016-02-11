@@ -16,7 +16,7 @@
 
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ elixir('css/all.css') }}">
+    <link rel="stylesheet" href="{{ url('css/all.css') }}">
 
 </head>
 <body id="app-layout">
@@ -86,7 +86,7 @@
     @yield('content')
 
     <!-- JavaScripts -->
-    <script src="{{ elixir('js/all.js') }}"></script>
+    <script src="{{ url('js/all.js') }}"></script>
      @yield('scripts')
 </body>
 </html>

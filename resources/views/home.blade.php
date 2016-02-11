@@ -20,7 +20,7 @@
                               <th>Sucursal</th>
                               <th>Estatus</th>
                               <th>Editar</th>
-                              <th>Pagar</th>
+                              <th></th>
                           </tr>
                       </thead>
                       <tbody>
@@ -32,7 +32,7 @@
                               <td>{{$miembro->sucursal->nombre}}</td>
                               <td>{{$miembro->status}}</td>
                               <td><a href="{{url('miembros/edit/'.$miembro->id)}}"><i class="fa fa-btn fa-edit"></i></a></td>
-                              <td><a href="{{url('miembros/pagar/'.$miembro->id)}}" class="btn btn-success" role="button"><i class="fa fa-btn fa-dollar"></i></a></td>
+                              <td><a href="{{url('miembros/pagar/'.$miembro->id)}}" class="btn btn-success" role="button"><i class="fa fa-btn fa-dollar"></i>Pagar</a></td>
                           </tr>
                         @endforeach
 

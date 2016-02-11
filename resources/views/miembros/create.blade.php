@@ -70,7 +70,7 @@
 							<label class="col-md-4 control-label">Fecha de Inscripción</label>
 
 							<div class="col-md-6">
-								<input type="date" class="form-control" id="fecha_inscripcion" name="fecha_inscripcion" value="{{ old('fecha_inscripcion') }}">
+								<input type="text" class="form-control" id="datepicker" name="fecha_inscripcion" value="{{ old('fecha_inscripcion') }}">
 
 								@if ($errors->has('fecha_inscripcion'))
 								<span class="help-block">
@@ -150,4 +150,9 @@
 		</div>
 	</div>
 </div>
+@section('scripts')
+<script>
+$( "#datepicker" ).datepicker();
+</script>
+@endsection
 @endsection
