@@ -46,16 +46,6 @@ html, body {
     background-size: cover;
 }
 
-.acceso-page{
-    height: 100%;
-    margin-top: 0px;
-    width: 100%;
-    background-image: url('/assets/images/armorgym.jpg');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-}
 
 .navbar-brand{
     font-size: 26px;

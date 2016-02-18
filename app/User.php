@@ -30,7 +30,12 @@ class User extends Authenticatable
 
     public function miembro()
     {
-        return $this->hasOne('App\Miembro');
+        return $this->hasMany('App\Miembro');
+    }
+
+    public function user()
+    {
+        return $this->hasMany('App\Pago');
     }
 
 

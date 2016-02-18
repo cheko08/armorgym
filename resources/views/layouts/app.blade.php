@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 
     <title>Armor Gym - @yield('title')</title>
@@ -73,6 +73,7 @@
                                   <li class="dropdown-header">Configuración</li>
                                    <li><a href="{{ url('membresias') }}"><i class="fa fa-btn fa-credit-card"></i>Membresías</a></li>
                                  <li><a href="{{ url('sucursales') }}"><i class="fa fa-btn fa-building"></i>Sucursales</a></li>
+                                   <li><a href="{{ url('reportes') }}"><i class="fa fa-btn fa-bar-chart"></i>Reportes</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Cerrar Sesión</a></li>
                             </ul>

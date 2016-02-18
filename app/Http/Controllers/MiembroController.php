@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Membresia;
+use App\Asistencia;
 use App\Sucursal;
 use App\Miembro;
 use App\Pago;
@@ -158,10 +159,17 @@ class MiembroController extends Controller
 			$ultimo_pago =  $miembro->fecha_inscripcion;
 		}
 
-		if($miembro->status == 'A' && $miembro->fecha_proximo_pago >= Date('Y-m-d') && $miembro->fecha_inscripcion <=  Date('Y-m-d') )
+		if($miembro->status == 'A' && $miembro->fecha_proximo_pago >= Date('Y-m-d'))
 		{	
 			$acceso ='Permitido';
 			$color ='success';
+
+			$fecha_hoy =  Date('Y-m-d');
+
+			$asistencia = Asistencia::create([
+				'miembro_id'=> $miembro->id,
+				'fecha_asistencia' => $fecha_hoy,
+				]);
 		}
 		else
 		{

@@ -16,6 +16,11 @@ class Pago extends Model
 
        public function miembro()
     {
-        return $this->hasMany('App\Miembro');
+        return $this->belongsTo('App\Miembro');
+    }
+
+       public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }

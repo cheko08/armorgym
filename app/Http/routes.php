@@ -42,4 +42,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('miembros/pagar/{id}','PagoController@pagar');
     Route::post('pagos/pagar/{id}','PagoController@realizarPago');
+
+    Route::get('reportes', 'ReporteController@index');
+    Route::post('reportes/generar', 'ReporteController@generar');
 });

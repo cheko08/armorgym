@@ -36,7 +36,12 @@ class Miembro extends Model
 
    public function pago()
    {
-       return $this->belongsTo('App\Pago');
+       return $this->hasMany('App\Pago');
+   }
+
+    public function asistencia()
+   {
+       return $this->hasMany('App\Asistencia');
    }
 
    public function user()
