@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegistrarMiembrosRequest;
+use App\Http\Requests\UpdateMiembrosRequest;
 use App\Http\Requests\ValidarMiembroRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -81,7 +82,7 @@ class MiembroController extends Controller
 		return view('miembros.edit',compact('miembro','sucursales','membresias'));
 	}
 
-	public function update($id, RegistrarMiembrosRequest $request)
+	public function update($id, UpdateMiembrosRequest $request)
 	{
 		$miembro = Miembro::findOrFail($id);
 
@@ -98,8 +99,8 @@ class MiembroController extends Controller
 			}
 		}
 
-		$fecha_inscripcion = date('Y/m/d', strtotime($request->input('fecha_inscripcion')));
-		
+		$fecha_inscripcion = date('Y-m-d', strtotime($request->input('fecha_inscripcion')));
+		//dd($request->input('fecha_inscripcion'));
 		$miembro->nombre=$request->input('nombre');
 		$miembro->apellidos=$request->input('apellidos');
 		$miembro->email=$request->input('email');

@@ -108,7 +108,7 @@
 
 					<label class="col-md-4 control-label">Fecha de Inscripción</label>
 					<?php 
-					$originalDatePago = $miembro->fecha_proximo_pago;
+					$originalDatePago = $miembro->fecha_inscripcion;
 					$formatInscripcion = date("d/m/Y", strtotime($originalDatePago));
 
 
@@ -118,7 +118,7 @@
 					?>
 
 					<div class="col-md-6">
-						<input type="text" id="datepicker" class="form-control" name="fecha_inscripcion" value="{{ $formatInscripcion }}">
+						<input type="text" id="datepicker" class="form-control" name="fecha_inscripcion" value="{{ $miembro->fecha_inscripcion }}">
 
 					</div>
 				</div>
@@ -128,7 +128,7 @@
 					<label class="col-md-4 control-label">Próxima Fecha de Pago</label>
 
 					<div class="col-md-6">
-						<input type="text" class="form-control" name="fecha_proximo_pago" disabled="disabled" value="{{ $formatPago }}">
+						<input type="text" class="form-control" name="fecha_proximo_pago" disabled="disabled" value="{{ $miembro->fecha_proximo_pago }}">
 
 					</div>
 				</div>

@@ -36,12 +36,12 @@ class Miembro extends Model
 
    public function pago()
    {
-       return $this->hasMany('App\Pago');
+       return $this->hasMany('App\Pago')->withTrashed();;
    }
 
     public function asistencia()
    {
-       return $this->hasMany('App\Asistencia');
+       return $this->hasMany('App\Asistencia')->withTrashed();;
    }
 
    public function user()

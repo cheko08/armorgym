@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class RegistrarMiembrosRequest extends Request
+class UpdateMiembrosRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +27,7 @@ class RegistrarMiembrosRequest extends Request
             'nombre' => 'required',
             'apellidos' => 'required',
             'telefono' => 'required|min:7',
-            'email' => 'email|unique:miembros,email',
+            'email' => 'email',
             'sucursal' => 'required',
             'membresia' =>'required',
         ];

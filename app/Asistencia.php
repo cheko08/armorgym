@@ -12,6 +12,6 @@ class Asistencia extends Model
 
       public function miembro()
     {
-        return $this->belongsTo('App\Miembro');
+        return $this->belongsTo('App\Miembro')->withTrashed();;
     }
 }
