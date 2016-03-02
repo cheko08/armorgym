@@ -1503,4 +1503,20 @@ html, body {
     font-size: 40px;
   }
 
+
+.scan-container{
+    margin: 250px auto;
+    max-width: 600px;
+    text-align: center;
+}
+.scan-container input{
+    font-size: 40px;
+    height: 68px;
+    text-align: center;
+    font-weight: 800;
+}
+
+.barcode{
+  font-size: 120px;
+}
 /*# sourceMappingURL=all.css.map */

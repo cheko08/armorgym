@@ -65,11 +65,17 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                            <li class="dropdown-header">Menu</li>
+                            <li class="dropdown-header">Miembros</li>
                                 <li><a href="{{ url('/home') }}"><i class="fa fa-btn fa-desktop"></i>Panel de administración</a></li>
                                  <li><a href="{{ url('/miembros/acceso') }}"><i class="fa fa-btn fa-sign-in"></i>Acceso de Miembros</a></li>
                                  <li><a href="{{ url('/miembros/create') }}"><i class="fa fa-btn fa-user-plus"></i>Registrar Miembro</a></li>
                                  <li role="separator" class="divider"></li>
+                                  <li class="dropdown-header">Ventas</li>
+                                    <li><a href="{{url('ventas/punto-venta')}}"><i class="fa fa-btn fa-shopping-cart"></i>Punto de Venta</a></li>
+                                    <li><a href="{{url('productos/scan-producto')}}"><i class="fa fa-btn fa-plus "></i>Agregar Producto</a></li>
+                                    <li><a href="{{url('productos')}}"><i class="fa fa-btn fa-coffee"></i>Productos</a></li>
+
+                                   <li role="separator" class="divider"></li>
                                   <li class="dropdown-header">Configuración</li>
                                    <li><a href="{{ url('membresias') }}"><i class="fa fa-btn fa-credit-card"></i>Membresías</a></li>
                                  <li><a href="{{ url('sucursales') }}"><i class="fa fa-btn fa-building"></i>Sucursales</a></li>

@@ -45,4 +45,21 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('reportes', 'ReporteController@index');
     Route::post('reportes/generar', 'ReporteController@generar');
+
+    //ventas
+    Route::get('ventas/punto-venta', 'VentasController@puntoVenta');
+
+
+    Route::get('productos/scan-producto', 'ProductoController@scanProducto');
+    Route::post('productos/store-codigo', 'ProductoController@storeCodigo');
+    Route::get('productos/store-producto/{id}', 'ProductoController@storeProducto');
+    Route::post('productos/store/{id}','ProductoController@storeProductoDetalles');
+
+    Route::get('productos', 'ProductoController@index');
+    
+    
+    
+    
+
+
 });
