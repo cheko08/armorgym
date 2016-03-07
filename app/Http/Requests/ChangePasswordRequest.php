@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class StoreDetallesRequest extends Request
+class ChangePasswordRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,9 @@ class StoreDetallesRequest extends Request
     public function rules()
     {
         return [
-           'descripcion' => 'required',
-           'cantidad' => 'required|numeric',
-           'precio' => 'required|numeric',
-           'sucursal' => 'required'
+            'old_password' => 'required',
+            'new_password' => 'required',
+            'password_confirmation'  => 'required|same:new_password'
         ];
     }
 }

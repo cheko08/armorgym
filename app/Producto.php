@@ -13,4 +13,9 @@ class Producto extends Model
    {
        return $this->belongsTo('App\Sucursal');
    }
+
+   public function ventas()
+	{
+		return $this->hasMany('App\DetalleVentas');
+	}
 }

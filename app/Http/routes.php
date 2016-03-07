@@ -13,6 +13,8 @@
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
+    Route::get('user/cambiar-password', 'UserController@cambiarPassword');
+    Route::post('user/changePassword/{id}', 'UserController@changePassword');
     Route::get('/', 'HomeController@index');
     Route::get('home', 'HomeController@panelDeControl');
     Route::post('buscar', 'HomeController@buscar');
@@ -48,6 +50,15 @@ Route::group(['middleware' => 'web'], function () {
 
     //ventas
     Route::get('ventas/punto-venta', 'VentasController@puntoVenta');
+    Route::post('ventas/cobrar', 'VentasController@cobrar');
+    Route::get('ventas/pagar/{id}', 'VentasController@pagar');
+    Route::post('ventas/pagar/{id}', 'VentasController@registrarPago');
+    Route::get('ventas/cancelar/{id}', 'VentasController@cancelar');
+    Route::get('ventas/ticket/{id}', 'VentasController@ticket');
+
+    //API VENTAS
+    Route::post('api/addProducto','VentasController@scan');
+
 
 
     Route::get('productos/scan-producto', 'ProductoController@scanProducto');
@@ -56,6 +67,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('productos/store/{id}','ProductoController@storeProductoDetalles');
 
     Route::get('productos', 'ProductoController@index');
+    Route::get('productos/edit/{id}', 'ProductoController@edit');
+    Route::post('productos/update/{id}', 'ProductoController@update');
     
     
     

@@ -17,8 +17,8 @@ class CreateProductosTable extends Migration
             $table->string('codigo');
             $table->string('descripcion');
             $table->integer('cantidad');
-            $table->integer('precio');
-            $table->integer('costo');
+            $table->double('precio');
+            $table->double('costo');
             $table->integer('sucursal_id');
             $table->integer('reorden');
             $table->string('imagen');

@@ -13,6 +13,7 @@
 				<th>Precio</th>
 				<th>Costo</th>
 				<th>Sucursal</th>
+				<th></th>
 			</thead>
 			<tbody>
 				@foreach($productos as $producto)
@@ -23,6 +24,7 @@
 					<td>{{$producto->precio}}</td>
 					<td>{{$producto->costo}}</td>
 					<td>{{$producto->sucursal->nombre}}</td>
+					<td><a href="{{url('productos/edit/'.$producto->id)}}"><i class="fa fa-btn fa-edit"></i></a></td>
 				</tr>
 
 

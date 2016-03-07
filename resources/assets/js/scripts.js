@@ -3,6 +3,9 @@ $(document).ready(function(){
      $("#text").text('Registrando...');
     $("#button").attr('class','fa fa-spinner fa-spin');
     return true;});
+  $("#cobrar").click(function(){
+    $("#button").attr('class','fa fa-spinner fa-spin');
+    return true;});
 
   $("#login").click(function(){
     $("#text").text('Iniciando Sesion...');

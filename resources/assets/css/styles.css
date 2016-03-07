@@ -168,3 +168,38 @@ html, body {
 .barcode{
   font-size: 120px;
 }
+
+.precio{
+   font-size: 28px;
+   font-weight: 800;
+   text-align: left;
+}
+
+.pago{
+  height: 45px;
+  width: 30%;
+  font-size: 28px;
+}
+
+.boderless th, .borderless td { 
+     border-top: none !important; 
+ }
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #print * {
+    visibility: visible;
+    font-size: 1.1em;
+  }
+
+  .header{
+    text-align: center;
+  }
+
+  .ticket-title{
+    text-align: center;
+  }
+
+}

@@ -16,11 +16,11 @@ class Pago extends Model
 
        public function miembro()
     {
-        return $this->belongsTo('App\Miembro')->withTrashed();;
+        return $this->belongsTo('App\Miembro')->withTrashed();
     }
 
        public function user()
     {
-        return $this->belongsTo('App\User')->withTrashed();;
+        return $this->belongsTo('App\User')->withTrashed();
     }
 }

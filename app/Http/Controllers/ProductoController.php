@@ -57,6 +57,26 @@ class ProductoController extends Controller
 		$producto->cantidad = 	$request->input('cantidad');
 		$producto->sucursal_id = $request->input('sucursal');
 		$producto->save();
-		return redirect('productos/scan-producto')->with('global', 'El producto ha sido registrado!');;
+		return redirect('productos/scan-producto')->with('global', 'El producto ha sido registrado!');
+	}
+
+	public function edit($id)
+	{
+		$producto = Producto::findOrFail($id);
+		$sucursales = Sucursal::all();
+		return view('productos.edit', compact('producto','sucursales'));
+	}
+
+	public function update(StoreDetallesRequest $request,$id)
+	{
+		$producto = Producto::findOrFail($id);
+
+		$producto->descripcion = $request->input('descripcion');
+		$producto->precio = $request->input('precio');
+		$producto->costo = 	$request->input('costo');
+		$producto->cantidad = 	$request->input('cantidad');
+		$producto->sucursal_id = $request->input('sucursal');
+		$producto->save();
+		return redirect('productos/edit/'.$producto->id)->with('global', 'El producto ha sido actualizado!');
 	}
 }

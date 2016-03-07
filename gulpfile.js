@@ -24,8 +24,6 @@ elixir(function(mix) {
         'sweetalert.js',
         'date.js',
         'jquery-ui.min.js',
-        'vue.min.js',
-        'vue-resource.min.js',
         'scripts.js',
     ])
      .version(["css/all.css", "js/all.js"]);

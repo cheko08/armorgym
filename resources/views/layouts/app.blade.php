@@ -80,6 +80,7 @@
                                    <li><a href="{{ url('membresias') }}"><i class="fa fa-btn fa-credit-card"></i>Membresías</a></li>
                                  <li><a href="{{ url('sucursales') }}"><i class="fa fa-btn fa-building"></i>Sucursales</a></li>
                                    <li><a href="{{ url('reportes') }}"><i class="fa fa-btn fa-bar-chart"></i>Reportes</a></li>
+                                   <li><a href="{{ url('user/cambiar-password') }}"><i class="fa fa-btn fa-user"></i>Cambiar Contraseña</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Cerrar Sesión</a></li>
                             </ul>
