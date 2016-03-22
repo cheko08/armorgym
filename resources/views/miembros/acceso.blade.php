@@ -8,7 +8,7 @@
 			   {!! csrf_field() !!}
 			<div class="form-group{{ $errors->has('id') ? ' has-error' : '' }}">
 
-				<input type="text" name="id" class="form-control" placeholder="Número de Acceso" value="{{ old('id') }}">
+				<input autofocus type="text" name="id" class="form-control" placeholder="Número de Acceso" value="{{ old('id') }}">
 				@if ($errors->has('id'))
 				<span class="help-block">
 					<strong>{{ $errors->first('id') }}</strong>

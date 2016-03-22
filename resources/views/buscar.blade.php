@@ -26,7 +26,7 @@
             @foreach($miembros as $miembro)
             <tr>
               <td>{{$miembro->id}}</td>
-              <td>{{$miembro->nombre}} {{$miembro->apellidos}}</td>
+              <td>{{ucwords($miembro->nombre)}} {{ucwords($miembro->apellidos)}}</td>
               <?php 
               $originalDatePago = $miembro->fecha_proximo_pago;
               $formatPago = date("d/m/Y", strtotime($originalDatePago));

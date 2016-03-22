@@ -8,8 +8,10 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">Agregar Producto</div>
 				<div class="panel-body">
-					<form class="form-horizontal" role="form" method="post" action="{{url('productos/store/'.$producto->id)}}">
+					<form class="form-horizontal" role="form" method="post" action="{{url('productos/store')}}">
 						{!! csrf_field() !!}
+
+						<input type="hidden" name="codigo" value="{{$producto}}">
 
 						<div class="form-group{{ $errors->has('descripcion') ? ' has-error' : '' }}">
 							<label class="col-md-4 control-label">Descripcion</label>

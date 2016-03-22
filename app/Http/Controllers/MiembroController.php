@@ -53,8 +53,8 @@ class MiembroController extends Controller
 
 
 		$miembro = Miembro::create([
-			'nombre' => $request->input('nombre'),
-			'apellidos' => $request->input('apellidos'),
+			'nombre' => ucwords($request->input('nombre')),
+			'apellidos' => ucwords($request->input('apellidos')),
 			'email' => $request->input('email'),
 			'telefono' => $request->input('telefono'),
 			'fecha_inscripcion' => $fecha_inscripcion,
@@ -101,8 +101,8 @@ class MiembroController extends Controller
 
 		$fecha_inscripcion = date('Y-m-d', strtotime($request->input('fecha_inscripcion')));
 		//dd($request->input('fecha_inscripcion'));
-		$miembro->nombre=$request->input('nombre');
-		$miembro->apellidos=$request->input('apellidos');
+		$miembro->nombre=ucwords($request->input('nombre'));
+		$miembro->apellidos=ucwords($request->input('apellidos'));
 		$miembro->email=$request->input('email');
 		$miembro->telefono=$request->input('telefono');
 		$miembro->fecha_inscripcion=$fecha_inscripcion;

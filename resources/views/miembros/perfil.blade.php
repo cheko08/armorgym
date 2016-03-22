@@ -23,23 +23,23 @@ $formatPago = date("d/m/Y", strtotime($originalDatePago));
 		</div>
 		<div class="col-md-8 perfil">
 		    <p><label for="Nombre">ID:</label> {{$miembro->id}}</p>
-			<p><label for="Nombre">Nombre:</label> {{$miembro->nombre}} {{$miembro->apellidos}}</p>
+			<p><label for="Nombre">Nombre:</label> {{ucwords($miembro->nombre)}} {{ucwords($miembro->apellidos)}}</p>
 			<p><label for="Plan">Membresía:</label> {{$miembro->membresia->nombre}}</p>
 			<p><label for="Precio">Pago Mensual:</label> ${{$miembro->membresia->precio_mensual}}</p>
 			<p><label for="fecha">Fecha de Inscripción:</label> {{$formatInscripcion}}</p>
 			<p><label for="fecha">Próximo Pago:</label> {{$formatPago}}</p>
 <?php
 $today = date('Y-m-d');
-$datetime1 = new DateTime($ultimo_pago);
+$datetime1 = new DateTime($today);
 $datetime2 = new DateTime($miembro->fecha_proximo_pago);
-$interval = $datetime2->diff($datetime1);
-$dias_para_pago = $interval->format('%a');
-if($dias_para_pago > 26)
+$interval = $datetime1->diff($datetime2);
+$dias_para_pago = $interval->format('%r%a%');
+if($dias_para_pago > 7)
 {
 	$class ='success';
 	$dias_para_pago2 ='Faltan '.$dias_para_pago.' días para el próximo pago';
 }
-elseif($dias_para_pago <= 0)
+elseif($dias_para_pago < 0)
 {
 	$class = 'danger';
 	$dias_para_pago2 ='<a href="'.url('miembros/pagar/'.$miembro->id).'" class="btn btn-success" role="button"><i class="fa fa-btn fa-dollar"></i>Realizar Pago</a>';

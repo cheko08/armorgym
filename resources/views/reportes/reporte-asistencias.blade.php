@@ -14,8 +14,8 @@
 			@foreach($asistencias as $asistencia)
 			<?php
 
-			$originalDateasistencia = $asistencia->fecha_asistencia;
-			$formatasistencia = date("d/m/Y", strtotime($originalDateasistencia));
+			$originalDateasistencia = $asistencia->created_at;
+			$formatasistencia = date("d/m/Y - h:i A", strtotime($originalDateasistencia));
 
 			?>
 			<tr>

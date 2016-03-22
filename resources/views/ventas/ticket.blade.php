@@ -66,5 +66,11 @@
 		<a href="{{url('ventas/punto-venta')}}" class="btn btn-lg btn-success"><i class="fa fa-btn fa-reply"></i>Regresar</a>
 	</div>
 </div>
-
+@section('scripts')
+<script>
+	$("document").ready(function() {
+   window.print();
+});
+</script>
+@endsection
 @endsection

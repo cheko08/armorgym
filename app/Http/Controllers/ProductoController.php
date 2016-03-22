@@ -33,23 +33,23 @@ class ProductoController extends Controller
 
 	public function storeCodigo(AddProductoRequest $request)
 	{
-		$producto = Producto::create($request->all());
-		if($producto)
-		{
-			return redirect('productos/store-producto/'.$producto->id);
-		}
+		
+			return redirect('productos/store-producto/'.$request->input('codigo'));
+
 	}
 
 	public function storeProducto($id)
 	{
-		$producto = Producto::findOrFail($id);
+		$producto = $id;
 		$sucursales = Sucursal::all();
 		return view('productos.add-producto-detalles', compact('producto','sucursales'));
 	}
 
-	public function storeProductoDetalles(StoreDetallesRequest $request, $id)
+	public function storeProductoDetalles(StoreDetallesRequest $request)
 	{
-		$producto = Producto::findOrFail($id);
+		$producto = Producto::create([
+			'codigo' =>  $request->input('codigo')
+			]);
 
 		$producto->descripcion = $request->input('descripcion');
 		$producto->precio = $request->input('precio');

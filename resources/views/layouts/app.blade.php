@@ -77,9 +77,14 @@
 
                                    <li role="separator" class="divider"></li>
                                   <li class="dropdown-header">Configuración</li>
+                                    @if (Auth::user()->role === 'admin')
                                    <li><a href="{{ url('membresias') }}"><i class="fa fa-btn fa-credit-card"></i>Membresías</a></li>
                                  <li><a href="{{ url('sucursales') }}"><i class="fa fa-btn fa-building"></i>Sucursales</a></li>
+                                 @endif
                                    <li><a href="{{ url('reportes') }}"><i class="fa fa-btn fa-bar-chart"></i>Reportes</a></li>
+                                   @if (Auth::user()->role === 'admin')
+                                   <li><a href="{{ url('user/register') }}"><i class="fa fa-btn fa-user-plus"></i>Agregar Usuario</a></li>
+                                   @endif
                                    <li><a href="{{ url('user/cambiar-password') }}"><i class="fa fa-btn fa-user"></i>Cambiar Contraseña</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Cerrar Sesión</a></li>

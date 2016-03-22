@@ -25,6 +25,7 @@ class VentasController extends Controller
 		return view('ventas.punto-venta');
 	}
 
+
 	public function scan(Request $request)
 	{
 		$producto = Producto::where('codigo',$request->input('codigo'))->get();
@@ -32,8 +33,15 @@ class VentasController extends Controller
 		return $producto;
 	}
 
+
+
 	public function cobrar(CobrarRequest $request)
 	{
+		if($request->input('pago') < $request->input('total') )
+		{
+			return back();
+		}
+
 		$ticket = Ticket::create();	
 		foreach($request->input('id') as $producto)
 		{
@@ -45,41 +53,15 @@ class VentasController extends Controller
 				'user_id' => Auth::user()->id ]);
 		}
 
-		return redirect('ventas/pagar/'.$ticket->id);
-	}
-
-	public function pagar($id)
-	{
-		$ticket = Ticket::findOrFail($id);
-		$detalleVentas = DetalleVentas::where('ticket_id','=',$id)->get();
-		$total = 0;
-
-		foreach($detalleVentas as $ventas)
-		{
-			$total += $ventas->producto->precio;
-		}
-
-		
-		return view('ventas.pagar', compact('detalleVentas', 'total', 'ticket'));
-
-	}
-
-	public function registrarPago($id, PagoRequest $request)
-	{
-		if($request->input('pago') < $request->input('total') )
-		{
-			return back();
-		}
-
 		$cambio =$request->input('total') - $request->input('pago');
 
-		$ticket = Ticket::findOrFail($id);
+		$ticket = Ticket::findOrFail($ticket->id);
 		$ticket->pagado = $request->input('pago');
 		$ticket->cambio = $cambio;
 		$ticket->status = 'Pagado';
 		$ticket->save();
 
-		$detalleVentas = DetalleVentas::where('ticket_id','=',$id)->get();
+		$detalleVentas = DetalleVentas::where('ticket_id','=',$ticket->id)->get();
 		foreach($detalleVentas as $ventas)
 		{
 			$producto = Producto::findOrFail($ventas->producto_id);
@@ -90,16 +72,11 @@ class VentasController extends Controller
 		}
 
 		return redirect('ventas/ticket/'.$ticket->id);
+
 		
 	}
 
-	public function cancelar($id)
-	{
-		$detalleVentas = DetalleVentas::where('ticket_id', $id)->delete();
-		$ticket = Ticket::where('id', $id)->delete();
-
-		return redirect('ventas/punto-venta');
-	}
+	
 
 
 	public function ticket($id)

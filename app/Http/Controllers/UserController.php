@@ -40,4 +40,9 @@ class UserController extends Controller
 		return  response('Unauthorized.', 401);
 	}
 
+	public function register()
+	{
+		return view('auth.register');
+	}
+
 }

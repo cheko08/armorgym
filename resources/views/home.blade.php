@@ -27,7 +27,7 @@
                         @foreach($miembros as $miembro)
                           <tr>
                               <td>{{$miembro->id}}</td>
-                              <td>{{$miembro->nombre}} {{$miembro->apellidos}}</td>
+                              <td>{{ucwords($miembro->nombre)}} {{ucwords($miembro->apellidos)}}</td>
                               <td>{{$miembro->membresia->nombre}}</td>
                               <td>{{$miembro->sucursal->nombre}}</td>
                               <td>{{$miembro->status}}</td>

@@ -1532,6 +1532,7 @@ html, body {
   font-size: 28px;
 }
 
+
 .boderless th, .borderless td { 
      border-top: none !important; 
  }
@@ -1553,5 +1554,15 @@ html, body {
     text-align: center;
   }
 
+}
+
+.productos{
+  font-size: 18px;
+}
+
+.total{
+  font-size: 22px;
+  font-weight: bold;
+  height: 60px;
 }
 /*# sourceMappingURL=all.css.map */
