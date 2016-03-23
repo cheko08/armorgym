@@ -214,3 +214,11 @@ html, body {
   font-weight: bold;
   height: 60px;
 }
+
+.caja{
+  width: 700px;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  text-align: center;
+}

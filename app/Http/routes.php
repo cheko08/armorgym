@@ -68,7 +68,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('productos/edit/{id}', 'ProductoController@edit');
     Route::post('productos/update/{id}', 'ProductoController@update');
     
-    
+    Route::post('caja/abrir', 'VentasController@abrirCaja');
+    Route::get('caja/cerrar', 'VentasController@cerrarCaja');
     
     
 

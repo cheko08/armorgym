@@ -9,9 +9,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CobrarRequest;
 use App\Http\Requests\PagoRequest;
 use App\Producto;
+use App\Sucursal;
 use App\Ticket;
 use App\DetalleVentas;
 use Auth;
+use App\Caja;
 
 class VentasController extends Controller
 {
@@ -22,9 +24,36 @@ class VentasController extends Controller
 
 	public function puntoVenta()
 	{
-		return view('ventas.punto-venta');
+		if(Caja::where('user_id', Auth::user()->id )->where('status','abierta')->count() > 0)
+		{
+			return view('ventas.punto-venta');
+		}
+		$sucursales = Sucursal::all();
+		return view('ventas.abrir-caja', compact('sucursales'));
 	}
 
+	public function abrirCaja(Request $request)
+	{
+		$caja = Caja::create([
+			'user_id' =>  Auth::user()->id,
+			'sucursal_id' => $request->input('sucursal'),
+			'monto_inicial' => $request->input('monto_inicial'),
+			'status' =>  'abierta'
+			]);
+		if($caja)
+		{
+			return redirect('ventas/punto-venta');
+		}
+		
+	}
+
+	public function cerrarCaja()
+	{
+		$caja = Caja::where('user_id', Auth::user()->id )->where('status','abierta')->first();
+		$caja->status = 'cerrada';
+		$caja->save();
+		return redirect('ventas/punto-venta');
+	}
 
 	public function scan(Request $request)
 	{
@@ -41,6 +70,8 @@ class VentasController extends Controller
 		{
 			return back();
 		}
+
+		$caja =Caja::where('user_id', Auth::user()->id )->where('status','abierta')->first();
 
 		$ticket = Ticket::create();	
 		foreach($request->input('id') as $producto)
@@ -61,10 +92,14 @@ class VentasController extends Controller
 		$ticket->status = 'Pagado';
 		$ticket->save();
 
+		$caja->ingresos = $caja->ingresos + $request->input('pago');
+		$caja->egresos = $caja->egresos + $cambio;
+		$caja->save();
+
 		$detalleVentas = DetalleVentas::where('ticket_id','=',$ticket->id)->get();
 		foreach($detalleVentas as $ventas)
 		{
-			$producto = Producto::findOrFail($ventas->producto_id);
+			$producto = Producto::where('id',$ventas->producto_id)->where('sucursal_id', $caja->sucursal_id)->first();
 
 			$producto->cantidad = $producto->cantidad - 1;
 			$producto->save();

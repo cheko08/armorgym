@@ -73,7 +73,7 @@
                                 <select class="form-control" name="role">
                                    
                                     <option value="ventas" selected="selected">Ventas</option>
-                                     <option value="registro">Registros</option>
+                                    
                                 </select>
 
                                 @if ($errors->has('role'))

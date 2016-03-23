@@ -1,4 +1,4 @@
-<div>@extends('layouts.app')
+@extends('layouts.app')
 	@section('title', 'Punto de Venta')
 	@section('content')
 	@include('messages.global')
@@ -7,6 +7,7 @@
 			<div id="ticket">
 
 				<h1><i class="fa fa-cart-arrow-down"></i> Caja Registradora</h1>
+				<a href="{{url('caja/cerrar')}}" class="btn btn-warning">Cerrar Caja</a>
 
 				<form  id="scan">
 					<input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" > 

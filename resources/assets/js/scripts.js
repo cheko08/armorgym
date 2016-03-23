@@ -1,4 +1,4 @@
-$(document).ready(function(){
+  $(document).ready(function(){
   $("#register").click(function(){
      $("#text").text('Registrando...');
     $("#button").attr('class','fa fa-spinner fa-spin');
@@ -26,6 +26,7 @@ $(document).ready(function(){
      $("#text").text('Buscando Miembro...');
     $("#button").attr('class','fa fa-spinner fa-spin');
     return true;});
+
 });
 
 
