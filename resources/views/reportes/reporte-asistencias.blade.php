@@ -19,7 +19,7 @@
 
 			?>
 			<tr>
-				<td>{{$asistencia->miembro->nombre}} {{$asistencia->miembro->apellidos}}</td>
+				<td>{{ucwords($asistencia->miembro->nombre)}} {{ucwords($asistencia->miembro->apellidos)}}</td>
 				<td>{{$formatasistencia}}</td>
 				
 			</tr>

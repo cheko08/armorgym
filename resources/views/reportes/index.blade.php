@@ -33,17 +33,17 @@
 
 						<div class="form-group">
 							<label class="checkbox-inline col-md-4 control-label">
-  <input type="radio" name="reporte" value="pagos" checked="checked"> Historial de Pagos
-</label>
-<label class="checkbox-inline">
-  <input type="radio" name="reporte" value="asistencia"> Lista de Asistencia
-</label>
+								<input type="radio" name="reporte" value="pagos" checked="checked"> Historial de Pagos
+							</label>
+							<label class="checkbox-inline">
+								<input type="radio" name="reporte" value="asistencia"> Lista de Asistencia
+							</label>
+							<label class="checkbox-inline">
+								<input type="radio" name="reporte" value="ventas"> Punto de Venta
+							</label>
 
 						</div>
 
-				
-
-						
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary" id="save">

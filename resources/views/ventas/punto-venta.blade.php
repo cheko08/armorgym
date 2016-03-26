@@ -7,7 +7,7 @@
 			<div id="ticket">
 
 				<h1><i class="fa fa-cart-arrow-down"></i> Caja Registradora</h1>
-				<a href="{{url('caja/cerrar')}}" class="btn btn-warning">Cerrar Caja</a>
+				<a href="{{url('reportes/detalle')}}" class="btn btn-warning">Detalle Ventas</a>
 
 				<form  id="scan">
 					<input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" > 

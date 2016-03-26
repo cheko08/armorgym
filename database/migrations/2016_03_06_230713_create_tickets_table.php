@@ -17,6 +17,8 @@ class CreateTicketsTable extends Migration
             $table->double('pagado');
             $table->double('cambio');
             $table->string('status');
+            $table->integer('caja_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

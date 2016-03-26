@@ -18,6 +18,7 @@ class CreateCajasTable extends Migration
             $table->integer('sucursal_id');
             $table->string('status');
             $table->double('monto_inicial');
+            $table->date('fecha');
             $table->double('ingresos');
             $table->double('egresos');
             $table->timestamps();

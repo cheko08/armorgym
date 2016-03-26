@@ -34,10 +34,12 @@ class VentasController extends Controller
 
 	public function abrirCaja(Request $request)
 	{
+		$today =Date('Y-m-d');
 		$caja = Caja::create([
 			'user_id' =>  Auth::user()->id,
 			'sucursal_id' => $request->input('sucursal'),
 			'monto_inicial' => $request->input('monto_inicial'),
+			'fecha' => $today,
 			'status' =>  'abierta'
 			]);
 		if($caja)
@@ -89,6 +91,8 @@ class VentasController extends Controller
 		$ticket = Ticket::findOrFail($ticket->id);
 		$ticket->pagado = $request->input('pago');
 		$ticket->cambio = $cambio;
+		$ticket->caja_id = $caja->id;
+		$ticket->user_id = Auth::user()->id;
 		$ticket->status = 'Pagado';
 		$ticket->save();
 
@@ -96,7 +100,7 @@ class VentasController extends Controller
 		$caja->egresos = $caja->egresos + $cambio;
 		$caja->save();
 
-		$detalleVentas = DetalleVentas::where('ticket_id','=',$ticket->id)->get();
+		/*$detalleVentas = DetalleVentas::where('ticket_id','=',$ticket->id)->get();
 		foreach($detalleVentas as $ventas)
 		{
 			$producto = Producto::where('id',$ventas->producto_id)->where('sucursal_id', $caja->sucursal_id)->first();
@@ -104,7 +108,7 @@ class VentasController extends Controller
 			$producto->cantidad = $producto->cantidad - 1;
 			$producto->save();
 
-		}
+		}*/
 
 		return redirect('ventas/ticket/'.$ticket->id);
 

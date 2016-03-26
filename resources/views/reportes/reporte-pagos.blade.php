@@ -20,12 +20,18 @@
 
 			?>
 			<tr>
-				<td>{{$pago->miembro->nombre}} {{$pago->miembro->apellidos}}</td>
+				<td>{{ucwords($pago->miembro->nombre)}} {{ucwords($pago->miembro->apellidos)}}</td>
 				<td>{{$formatPago}}</td>
 				<td>{{$pago->cantidad}}</td>
 				<td>{{$pago->user->name}}</td>
 			</tr>
 			@endforeach
+			<tr>
+			<td></td>
+			<td><strong>Total:</strong></td>
+			<td><strong>{{$total}}</strong></td>
+			<td></td>
+			</tr>
 		</tbody>
 	</table>
 </div>
