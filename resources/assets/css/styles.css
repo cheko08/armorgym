@@ -192,7 +192,8 @@ html, body {
   }
   #print * {
     visibility: visible;
-    font-size: 1.1em;
+    font-size: 1.5em;
+    size: 5.5in 8.5in;
   }
 
   .header{

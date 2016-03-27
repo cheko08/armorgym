@@ -60,7 +60,7 @@
 								<div class="input-group">
 
 									<div class="input-group-addon total">$</div>
-									<input type="text" name="pago" id="pago" class="form-control total" autocomplete="off">
+									<input type="number" name="pago" id="pago" class="form-control total" autocomplete="off">
 
 								</div>
 
@@ -77,7 +77,7 @@
 								<div class="input-group">
 
 									<div class="input-group-addon total">$</div>
-									<input type="text" name="cambio" id="cambio" class="form-control total" readonly autocomplete="off">
+									<input type="number" name="cambio" id="cambio" class="form-control total" readonly autocomplete="off">
 
 								</div>
 
@@ -121,7 +121,7 @@
 				success: function(result){
 					$("#productos").append("<tr id='row'></td><td><input type='hidden' value='"+result[0].id+"' name='id[]'>"+result[0].descripcion+"</td><td>1</td><td>"+result[0].precio+"</td></tr>");
 					$("#codigo").val("");
-					total =result[0].precio + total;
+					total =parseFloat(result[0].precio) + parseFloat(total);
 					$("#total").val(total);
 				}});
 		});
