@@ -53,38 +53,7 @@
 							</div>
 						</div>
 
-						<div class="form-group{{ $errors->has('cantidad') ? ' has-error' : '' }}">
-							<label class="col-md-4 control-label">Cantidad</label>
-
-							<div class="col-md-6">
-								<input type="number" class="form-control" name="cantidad" value="{{  $producto->cantidad }}">
-
-								@if ($errors->has('cantidad'))
-								<span class="help-block">
-									<strong>{{ $errors->first('cantidad') }}</strong>
-								</span>
-								@endif
-							</div>
-						</div>
-						<div class="form-group{{ $errors->has('sucursal') ? ' has-error' : '' }}">
-							<label class="col-md-4 control-label">Sucursal</label>
-
-							<div class="col-md-6">
-								<select class="form-control" name="sucursal">
-								<option value="{{ $producto->sucursal->id }}">{{ $producto->sucursal->nombre }}</option>
-									@foreach($sucursales as $sucursal)
-									<option value="{{ $sucursal->id }}">{{ $sucursal->nombre }}</option>
-									@endforeach
-								</select>
-
-								@if ($errors->has('sucursal'))
-								<span class="help-block">
-									<strong>{{ $errors->first('sucursal') }}</strong>
-								</span>
-								@endif
-							</div>
-						</div>
-
+					
 						
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">

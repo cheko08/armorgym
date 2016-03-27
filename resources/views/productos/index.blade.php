@@ -9,10 +9,8 @@
 			<thead>
 				<th>Codigo</th>
 				<th>Descripcion</th>
-				<th>Cantidad</th>
 				<th>Precio</th>
 				<th>Costo</th>
-				<th>Sucursal</th>
 				<th></th>
 			</thead>
 			<tbody>
@@ -20,10 +18,8 @@
 				<tr>
 					<td>{{$producto->codigo}}</td>
 					<td>{{$producto->descripcion}}</td>
-					<td>{{$producto->cantidad}}</td>
 					<td>{{$producto->precio}}</td>
 					<td>{{$producto->costo}}</td>
-					<td>{{$producto->sucursal->nombre}}</td>
 					<td><a href="{{url('productos/edit/'.$producto->id)}}"><i class="fa fa-btn fa-edit"></i></a></td>
 				</tr>
 

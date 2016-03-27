@@ -14,6 +14,7 @@ use App\Ticket;
 use App\DetalleVentas;
 use Auth;
 use App\Caja;
+use App\Inventario;
 
 class VentasController extends Controller
 {
@@ -100,15 +101,17 @@ class VentasController extends Controller
 		$caja->egresos = $caja->egresos + $cambio;
 		$caja->save();
 
-		/*$detalleVentas = DetalleVentas::where('ticket_id','=',$ticket->id)->get();
+		$detalleVentas = DetalleVentas::where('ticket_id','=',$ticket->id)->get();
 		foreach($detalleVentas as $ventas)
 		{
-			$producto = Producto::where('id',$ventas->producto_id)->where('sucursal_id', $caja->sucursal_id)->first();
+			if(Inventario::where('producto_id',$ventas->producto_id)->where('sucursal_id', $caja->sucursal_id)->count() > 0)
+			{
+				$inventario = Inventario::where('producto_id',$ventas->producto_id)->where('sucursal_id', $caja->sucursal_id)->first();
+				$inventario->cantidad = $inventario->cantidad - 1;
+				$inventario->save();
 
-			$producto->cantidad = $producto->cantidad - 1;
-			$producto->save();
-
-		}*/
+			}
+		}
 
 		return redirect('ventas/ticket/'.$ticket->id);
 

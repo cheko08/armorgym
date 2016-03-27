@@ -54,8 +54,6 @@ class ProductoController extends Controller
 		$producto->descripcion = $request->input('descripcion');
 		$producto->precio = $request->input('precio');
 		$producto->costo = 	$request->input('costo');
-		$producto->cantidad = 	$request->input('cantidad');
-		$producto->sucursal_id = $request->input('sucursal');
 		$producto->save();
 		return redirect('productos/scan-producto')->with('global', 'El producto ha sido registrado!');
 	}
@@ -74,8 +72,6 @@ class ProductoController extends Controller
 		$producto->descripcion = $request->input('descripcion');
 		$producto->precio = $request->input('precio');
 		$producto->costo = 	$request->input('costo');
-		$producto->cantidad = 	$request->input('cantidad');
-		$producto->sucursal_id = $request->input('sucursal');
 		$producto->save();
 		return redirect('productos/edit/'.$producto->id)->with('global', 'El producto ha sido actualizado!');
 	}

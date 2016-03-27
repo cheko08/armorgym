@@ -74,6 +74,10 @@
                                     <li><a href="{{url('ventas/punto-venta')}}"><i class="fa fa-btn fa-shopping-cart"></i>Punto de Venta</a></li>
                                     <li><a href="{{url('productos/scan-producto')}}"><i class="fa fa-btn fa-plus "></i>Agregar Producto</a></li>
                                     <li><a href="{{url('productos')}}"><i class="fa fa-btn fa-coffee"></i>Productos</a></li>
+                                    <li><a href="{{url('inventarios/index')}}"><i class="fa fa-btn fa-database"></i>Inventarios</a></li>
+                                     @if (Auth::user()->role === 'admin')
+                                     <li><a href="{{url('inventarios/create')}}"><i class="fa fa-btn fa-plus-square-o"></i>Agregar Inventario</a></li>
+                                      @endif
 
                                    <li role="separator" class="divider"></li>
                                   <li class="dropdown-header">Configuración</li>
@@ -85,7 +89,7 @@
                                    @if (Auth::user()->role === 'admin')
                                    <li><a href="{{ url('user/register') }}"><i class="fa fa-btn fa-user-plus"></i>Agregar Usuario</a></li>
                                    @endif
-                                   <li><a href="{{ url('user/cambiar-password') }}"><i class="fa fa-btn fa-user"></i>Cambiar Contraseña</a></li>
+                                   <li><a href="{{ url('user/cambiar-password') }}"><i class="fa fa-btn fa-lock"></i>Cambiar Contraseña</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Cerrar Sesión</a></li>
                             </ul>

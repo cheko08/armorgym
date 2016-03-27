@@ -69,6 +69,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('productos', 'ProductoController@index');
     Route::get('productos/edit/{id}', 'ProductoController@edit');
     Route::post('productos/update/{id}', 'ProductoController@update');
+
+    //Inventarios
+    Route::get('inventarios/index', 'InventariosController@index');
+    Route::get('inventarios/create', 'InventariosController@create');
+    Route::post('inventarios/store', 'InventariosController@store');
     
     Route::post('caja/abrir', 'VentasController@abrirCaja');
     Route::get('caja/cerrar', 'VentasController@cerrarCaja');
