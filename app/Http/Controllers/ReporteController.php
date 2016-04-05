@@ -15,7 +15,7 @@ use Auth;
 
 class ReporteController extends Controller
 {
-    public function __construct()
+	public function __construct()
 	{
 		$this->middleware('auth');
 	}
@@ -52,29 +52,49 @@ class ReporteController extends Controller
 		$fecha_inicio = date('Y-m-d', strtotime($request->input('fecha_inicio')));
 		$fecha_termino = date('Y-m-d', strtotime($request->input('fecha_termino')));
 		$reporte = $request->input('reporte');
+		$id = $request->input('id');
 
-		if($reporte === 'pagos'){
-			$pagos = Pago::where('fecha_pago','>=',$fecha_inicio)->where('fecha_pago','<=',$fecha_termino)->get();
-			$total = Pago::where('fecha_pago','>=',$fecha_inicio)->where('fecha_pago','<=',$fecha_termino)->sum('cantidad');
+		
+		if($reporte === 'pagos')
+		{
+			if($id === '')
+			{
+				$pagos = Pago::where('fecha_pago','>=',$fecha_inicio)->where('fecha_pago','<=',$fecha_termino)->get();
+				$total = Pago::where('fecha_pago','>=',$fecha_inicio)->where('fecha_pago','<=',$fecha_termino)->sum('cantidad');
+			}
+			else
+			{
+				$pagos = Pago::where('fecha_pago','>=',$fecha_inicio)->where('fecha_pago','<=',$fecha_termino)->where('miembro_id',$id)->get();
+				$total = Pago::where('fecha_pago','>=',$fecha_inicio)->where('fecha_pago','<=',$fecha_termino)->where('miembro_id',$id)->sum('cantidad');
+			}
+			return view('reportes.reporte-pagos', compact('pagos','total'));
 
-		     return view('reportes.reporte-pagos', compact('pagos','total'));
+		}
+		elseif($reporte === 'asistencia')
+		{
+			if($id === '')
+			{
+				$asistencias = Asistencia::where('fecha_asistencia','>=',$fecha_inicio)->where('fecha_asistencia','<=',$fecha_termino)->get();
+			}
+			else
+			{
+				$asistencias = Asistencia::where('fecha_asistencia','>=',$fecha_inicio)->where('fecha_asistencia','<=',$fecha_termino)->where('miembro_id',$id)->get();
+			}
+			return view('reportes.reporte-asistencias', compact('asistencias'));
+		}
+		elseif($reporte === 'ventas')
+		{
 
-		}elseif($reporte === 'asistencia'){
+			$ventas = Caja::where('fecha','>=',$fecha_inicio)->where('fecha','<=',$fecha_termino)->get();
+			$total_ingresos = Caja::where('fecha','>=',$fecha_inicio)->where('fecha','<=',$fecha_termino)->sum('ingresos');
+			$total_egresos = Caja::where('fecha','>=',$fecha_inicio)->where('fecha','<=',$fecha_termino)->sum('egresos');
+			$inicial_total = Caja::where('fecha','>=',$fecha_inicio)->where('fecha','<=',$fecha_termino)->sum('monto_inicial');
+			$ventas_total = $total_ingresos + $total_egresos;
 
-			$asistencias = Asistencia::where('fecha_asistencia','>=',$fecha_inicio)->where('fecha_asistencia','<=',$fecha_termino)->get();
-
-		     return view('reportes.reporte-asistencias', compact('asistencias'));
-		 }elseif($reporte === 'ventas'){
-
-		 	$ventas = Caja::where('fecha','>=',$fecha_inicio)->where('fecha','<=',$fecha_termino)->get();
-		 	$total_ingresos = Caja::where('fecha','>=',$fecha_inicio)->where('fecha','<=',$fecha_termino)->sum('ingresos');
-		 	$total_egresos = Caja::where('fecha','>=',$fecha_inicio)->where('fecha','<=',$fecha_termino)->sum('egresos');
-		 	$inicial_total = Caja::where('fecha','>=',$fecha_inicio)->where('fecha','<=',$fecha_termino)->sum('monto_inicial');
-		 	$ventas_total = $total_ingresos + $total_egresos;
-
-		 	return view('reportes.reporte-ventas', compact('ventas','ventas_total','inicial_total'));
-
-		}else{
+			return view('reportes.reporte-ventas', compact('ventas','ventas_total','inicial_total'));
+		}
+		else
+		{
 			return "no hay reporte seleccionado";
 		}
 

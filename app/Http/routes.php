@@ -78,7 +78,10 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('caja/abrir', 'VentasController@abrirCaja');
     Route::get('caja/cerrar', 'VentasController@cerrarCaja');
     
-    
+
 
 
 });
+   Route::get('emails/bienvenido', function(){
+        return view('emails.bienvenido');
+    });

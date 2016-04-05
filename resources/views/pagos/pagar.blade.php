@@ -53,7 +53,8 @@
 							?>
 
 							<div class="col-md-6">
-								<input type="text" class="form-control" disabled="disabled" name="prox_fecha_pago" value="{{$formatPago}} ">
+								<input type="text" id="datepicker" class="form-control" name="prox_fecha_pago" value="{{ $miembro->fecha_proximo_pago }}">
+								
 							</div>
 						</div>
 
@@ -70,5 +71,9 @@
 		</div>
 	</div>
 </div>
-
+@section('scripts')
+<script>
+	$( "#datepicker" ).datepicker();
+</script>
+@endsection
 @endsection

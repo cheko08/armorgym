@@ -44,7 +44,16 @@ class PagoController extends Controller
 		{
 			$monthToAdd = 1;
 
-		$d1 = DateTime::createFromFormat('Y-m-d', $miembro->fecha_proximo_pago);
+			if($miembro->fecha_proximo_pago >= $fecha_pago)
+			{
+				$d1 = DateTime::createFromFormat('Y-m-d', $miembro->fecha_proximo_pago);
+			}
+			else
+			{
+				$d1 = DateTime::createFromFormat('Y-m-d', $fecha_pago);
+			}
+
+		
 
 		$year = $d1->format('Y');
 		$month = $d1->format('n');

@@ -12,6 +12,14 @@
 					<form class="form-horizontal" role="form" method="POST" action="{{ url('reportes/generar') }}">
 						{!! csrf_field() !!}
 
+						<div class="form-group">
+							<label class="col-md-4 control-label">ID Miembro</label>
+
+							<div class="col-md-6">
+								<input type="number" class="form-control"  name="id" value="">
+							</div>
+						</div>
+
 
 						<div class="form-group">
 							<label class="col-md-4 control-label">Fecha de Inicio</label>
