@@ -18,7 +18,7 @@
 
 			<h1 style="color:#fff;">Bienvenido a Armor Gym</h1>
 			
-			<p style="color:#fff;">Hola Roberto, tu número de socio es <strong>{{$miembro->id}}</strong> </p>
+			<p style="color:#fff;">Hola {{$miembro->nombre}}, tu número de socio es <strong>{{$miembro->id}}</strong> </p>
 			<p style="color:#fff;">Tu membresía ({{$miembro->membresia->nombre}}) incluye <strong>{{$miembro->membresia->descripcion}}</strong> y tiene un costo de <strong>${{$miembro->membresia->precio_mensual}}.00 MXN</strong> pesos por mes.</p>
 			<p style="color:#fff;">Tu fecha de inscripción es: <strong>{{$fecha_inscripcion}}</strong></p>
 			<img src="http://www.armorgym.com.mx/assets/images/armorgym.jpg" alt="Armor Gym" style="max-width:100%;" >

@@ -12,6 +12,8 @@ use App\Caja;
 use App\Ticket;
 use App\DetalleVentas;
 use Auth;
+use App\Reporte_Gym;
+use App\Reporte_Venta;
 
 class ReporteController extends Controller
 {
@@ -31,7 +33,7 @@ class ReporteController extends Controller
 		$tickets = Ticket::where('caja_id',$caja->id)->get();
 		$monto_inicial = $caja->monto_inicial;
 
-		return view('reportes.detalles', compact('tickets','monto_inicial'));
+		return view('reportes.detalles', compact('tickets','monto_inicial','caja'));
 	}
 
 	public function ticket($id)
@@ -42,7 +44,7 @@ class ReporteController extends Controller
 
 		foreach($detalleVentas as $ventas)
 		{
-			$total += $ventas->producto->precio;
+			$total += $ventas->precio;
 		}
 		return view('reportes.ticket', compact('ticket', 'detalleVentas', 'total'));
 	}
@@ -99,5 +101,18 @@ class ReporteController extends Controller
 		}
 
 
+	}
+
+	public function reporteCorte($id)
+	{
+		$reportes = Reporte_Gym::where('caja',$id)->get();
+		$total_gym = Reporte_Gym::where('caja',$id)->sum('costo');
+		$total_gym = number_format($total_gym);
+
+		$productos = Reporte_Venta::where('caja',$id)->get();
+		$total_producto = Reporte_Venta::where('caja',$id)->sum('total');
+		$total_producto = number_format($total_producto);
+
+		return view('reportes.reporte-gym',compact('reportes','total_gym','productos','total_producto'));
 	}
 }

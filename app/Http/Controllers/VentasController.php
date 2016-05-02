@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CobrarRequest;
 use App\Http\Requests\PagoRequest;
+use App\Http\Requests\SalidasRequest;
 use App\Producto;
 use App\Sucursal;
 use App\Ticket;
@@ -15,6 +16,7 @@ use App\DetalleVentas;
 use Auth;
 use App\Caja;
 use App\Inventario;
+use App\Reporte_Venta;
 
 class VentasController extends Controller
 {
@@ -45,7 +47,7 @@ class VentasController extends Controller
 			]);
 		if($caja)
 		{
-			return redirect('ventas/punto-venta');
+			return back();
 		}
 		
 	}
@@ -80,8 +82,35 @@ class VentasController extends Controller
 		foreach($request->input('id') as $producto)
 		{
 			$producto = Producto::findOrFail($producto);
+			if(Inventario::where('producto_id',$producto->id)->where('sucursal_id', $caja->sucursal_id)->count() > 0)
+			{
+				$inventario = Inventario::where('producto_id',$producto->id)->where('sucursal_id', $caja->sucursal_id)->first();
+				$inventario->cantidad = $inventario->cantidad - 1;
+				$inventario->save();
+
+			}
+
+			if(Reporte_Venta::where('caja',$caja->id)->where('producto_id',$producto->id)->count() > 0)
+			{
+				$producto_reporte = Reporte_Venta::where('caja',$caja->id)->where('producto_id',$producto->id)->first();
+				$producto_reporte->cantidad = $producto_reporte->cantidad + 1;
+				$producto_reporte->total = $producto_reporte->total + $producto->precio;
+				$producto_reporte->save();
+			}
+			else
+			{
+				$producto_reporte = Reporte_Venta::create([
+					'caja' => $caja->id,
+					'producto_id' => $producto->id,
+					'cantidad' => 1,
+					'total' => $producto->precio]);
+
+			}
+
+
 			$venta = DetalleVentas::create([
-				'producto_id' => $producto->id,
+				'concepto' => $producto->descripcion,
+				'precio' => $producto->precio,
 				'cantidad' => 1,
 				'ticket_id' => $ticket->id,
 				'user_id' => Auth::user()->id ]);
@@ -102,16 +131,6 @@ class VentasController extends Controller
 		$caja->save();
 
 		$detalleVentas = DetalleVentas::where('ticket_id','=',$ticket->id)->get();
-		foreach($detalleVentas as $ventas)
-		{
-			if(Inventario::where('producto_id',$ventas->producto_id)->where('sucursal_id', $caja->sucursal_id)->count() > 0)
-			{
-				$inventario = Inventario::where('producto_id',$ventas->producto_id)->where('sucursal_id', $caja->sucursal_id)->first();
-				$inventario->cantidad = $inventario->cantidad - 1;
-				$inventario->save();
-
-			}
-		}
 
 		return redirect('ventas/ticket/'.$ticket->id);
 
@@ -129,9 +148,36 @@ class VentasController extends Controller
 
 		foreach($detalleVentas as $ventas)
 		{
-			$total += $ventas->producto->precio;
+			$total += $ventas->precio;
 		}
 		return view('ventas.ticket', compact('ticket', 'detalleVentas', 'total'));
+	}
+
+
+	public function getSalidas()
+	{
+		return view('ventas.salidas');
+	}
+
+	public function postSalidas(SalidasRequest $request)
+	{
+		$caja =Caja::where('user_id', Auth::user()->id )->where('status','abierta')->first();
+		$ticket = Ticket::create();
+
+		$salida = DetalleVentas::create([
+				'concepto' => $request->input('concepto'),
+				'precio' => -$request->input('cantidad'),
+				'cantidad' => 1,
+				'ticket_id' => $ticket->id,
+				'user_id' => Auth::user()->id ]);
+
+		$ticket->pagado = -$request->input('cantidad');
+		$ticket->cambio = 0;
+		$ticket->caja_id = $caja->id;
+		$ticket->user_id = Auth::user()->id;
+		$ticket->status = 'Salida de Efectivo';
+		$ticket->save();	
+		return redirect('ventas/punto-venta');
 	}
 
 }

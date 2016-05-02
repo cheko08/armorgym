@@ -26,9 +26,9 @@
 				<tbody>
 					@foreach($detalleVentas  as $venta)
 					<tr>
-						<td>{{$venta->producto->descripcion}}</td>
+						<td>{{$venta->concepto}}</td>
 						<td>{{$venta->cantidad}}</td>
-						<td align="right">{{$venta->producto->precio}}</td>
+						<td align="right">{{$venta->precio}}</td>
 						
 					</tr>
 					@endforeach

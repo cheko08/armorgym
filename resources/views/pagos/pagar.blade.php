@@ -43,6 +43,25 @@
 							</div>
 						</div>
 
+						<div class="form-group{{ $errors->has('concepto') ? ' has-error' : '' }}">
+							<label class="col-md-4 control-label">Concepto</label>
+
+							<div class="col-md-6">
+								<select class="form-control" name="concepto">
+									
+									<option value="Renovación">Renovación</option>
+									<option value="Inscripción">Inscripción</option>
+								
+								</select>
+
+								@if ($errors->has('concepto'))
+								<span class="help-block">
+									<strong>{{ $errors->first('concepto') }}</strong>
+								</span>
+								@endif
+							</div>
+						</div>
+
 						<div class="form-group">
 							<label class="col-md-4 control-label">Próxima fecha de pago</label>
 							<?php

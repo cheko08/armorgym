@@ -140,7 +140,7 @@ class MiembroController extends Controller
 			$ultimo_pago =  $miembro->fecha_inscripcion;
 		}
 		if($miembro->status == 'A' && $miembro->fecha_proximo_pago >= Date('Y-m-d'))
-			{
+		{
 			$acceso ='Permitido';
 			$color ='success';
 			$fecha_hoy =  Date('Y-m-d');
@@ -162,5 +162,17 @@ class MiembroController extends Controller
 		$miembro->status ='I';
 		$miembro->save();
 		$miembro->delete();
+	}
+	public function inactive()
+	{
+		$miembros = Miembro::all();
+		foreach($miembros as $miembro)
+		{
+			if($miembro->fecha_proximo_pago < Date('Y-m-d'))
+			{
+				$miembro->status = 'I';
+				$miembro->save();
+			}
+		}
 	}
 }

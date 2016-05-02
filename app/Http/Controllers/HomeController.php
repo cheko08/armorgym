@@ -29,15 +29,22 @@ class HomeController extends Controller
     {
         return view('welcome');
     }
-
+    /**
+     * Show members
+     * @return view count for active and all members
+     */
     public function panelDeControl()
     {
-       $miembros_activos = Miembro::where('status', 'A')->count();
-       $miembros = Miembro::orderBy('updated_at', 'desc')->paginate(20);
+        $miembros_activos = Miembro::where('status', 'A')->count();
+        $miembros = Miembro::orderBy('updated_at', 'desc')->paginate(20);
         return view('home',compact('miembros','miembros_activos'));
     }
-
-     public function buscar(Request $request)
+    /**
+     * Show search results
+     * @param  Request $request 
+     * @return View Results of the search
+     */
+    public function buscar(Request $request)
     {
         $first =DB::table('miembros')
         ->where('nombre','like',$request->input('miembro').'%')
@@ -53,7 +60,7 @@ class HomeController extends Controller
         ->union($first)
         ->union($second)->get();
 
-       $miembros_activos = Miembro::where('status', 'A')->count();
-         return view('buscar',compact('miembros','miembros_activos'));
+        $miembros_activos = Miembro::where('status', 'A')->count();
+        return view('buscar',compact('miembros','miembros_activos'));
     }
 }

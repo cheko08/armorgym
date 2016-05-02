@@ -45,4 +45,13 @@ class UserController extends Controller
 		return view('auth.register');
 	}
 
+	public function inactive()
+	{
+		$users = User::all();
+		foreach($users as $user)
+		{
+			
+		}
+	}
+
 }

@@ -4,8 +4,9 @@
 @include('messages.global')
 <div class="container">
 	<div class="row">
-		<a href="{{url('caja/cerrar')}}" class="btn btn-warning">Cerrar Caja</a>
+		<a href="{{url('reportes/reportes-corte/'.$caja->id)}}" class="btn btn-success">Imprimir Reportes</a>
 		<a href="{{url('ventas/punto-venta')}}" class="btn btn-primary">Regresar</a>
+		<a href="{{url('caja/cerrar')}}" class="btn btn-danger">Cerrar Caja</a>
 		<table class="table">
 			<thead>
 				<th>Ticket ID</th>

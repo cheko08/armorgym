@@ -8,6 +8,7 @@
 
 				<h1><i class="fa fa-cart-arrow-down"></i> Caja Registradora</h1>
 				<a href="{{url('reportes/detalle')}}" class="btn btn-warning">Detalle Ventas</a>
+				<a href="{{url('ventas/salidas')}}" class="btn btn-default">Salida De Efectivo</a>
 
 				<form  id="scan">
 					<input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" > 
