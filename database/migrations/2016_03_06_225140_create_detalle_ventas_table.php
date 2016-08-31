@@ -15,7 +15,9 @@ class CreateDetalleVentasTable extends Migration
         Schema::create('detalle_ventas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('ticket_id');
+            $table->string('concepto');
             $table->integer('producto_id');
+            $table->double('precio');
             $table->double('cantidad');
             $table->integer('user_id');
             $table->timestamps();
